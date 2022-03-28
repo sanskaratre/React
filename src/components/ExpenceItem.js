@@ -1,12 +1,26 @@
-function ExpenceItem (){
-    return <div>
-        <h2>Expence item!</h2>
-    <div>
-    <p>Food Rs 10</p>
-    <p>Petrol Rs 100</p>
-    <p>Movies Rs 200</p>
-    </div>
+import './ExpenseItem.css';
+
+function ExpenseItem (){
+
+    const expenseDate = new Date(2022, 3, 28);
+    const expenceTitle = 'Car Insurance';
+    const expenseAmount = 52;
+    const LocationOfExpenditure = 'At_DB_mall';
+
+
+    return (
+        <div className='expense-item'>
+        <div> {expenseDate.toUTCString()} </div>
+        <div className='expense-item__description'>
+        
+            <h3>{LocationOfExpenditure}</h3>
+            <h2> {expenceTitle} </h2>
+           <div className='expense-item__price'>${expenseAmount}</div>
         </div>
+    </div>
+
+    ) 
+    
    
 }
-export default ExpenceItem;
+export default ExpenseItem;
