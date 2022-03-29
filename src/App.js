@@ -43,8 +43,7 @@ function App() {
             title = {expens.title}
             LocationOfExpenditure = {expens.LocationOfExpenditure}
             amount = {expens.amount}
-            date = {expens.date}>        
-          </ExpenseItem>
+            date = {expens.date} />
           )
        })
       } 
