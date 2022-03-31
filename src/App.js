@@ -1,6 +1,8 @@
 
 import ExpenseItem from "./components/Expense/ExpenseItem";
 import Card from "./components/UI/Card";
+import NewExpense from "./components/NewExpense/NewExpense";
+
 
 const App = () => {
   const expenses = [
@@ -36,7 +38,7 @@ const App = () => {
   return (
     <div>
       <h2>Let's get started!</h2>
-
+      <NewExpense/>
       <Card className="expenses" id = 'perelement'>
       {
         expenses.map((expens) => {
