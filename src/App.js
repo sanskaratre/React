@@ -37,19 +37,17 @@ const App = () => {
     <div>
       <h2>Let's get started!</h2>
 
-      <Card className="expenses">
+      <Card className="expenses" id = 'perelement'>
       {
         expenses.map((expens) => {
           return (
-
-            <div >
             <ExpenseItem
             id = {expens.id}
             title = {expens.title}
             LocationOfExpenditure = {expens.LocationOfExpenditure}
             amount = {expens.amount}
             date = {expens.date} /> 
-            </div>  
+             
           )
        })
       } 
