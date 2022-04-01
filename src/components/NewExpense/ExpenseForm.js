@@ -1,27 +1,63 @@
-
+import React, {useState} from 'react';
 import './ExpenseForm.css';
 const ExpenseForm = () => {
-    const onChangeLog = (event) => {
-        console.log(event.target.value);
-
-    }
     
+    const [enteredtitle, setEnteredTitle] = useState('');
+    const [enteredAmount, setEnteredAmount] = useState('');
+    const [enteredDate, setEnteredDate] = useState('');
 
+//    const [userInput, setUserInput] = useState({
+//         enteredTitle,
+//         enteredAmount,
+//          enteredDate
+//     });
+
+    const titleChange = (event) => {
+        setEnteredTitle(event.target.value);   
+    //    setUserInput({
+    //         ...userInput,
+    //         enteredTitle:event.target.value 
+    //        })
+    };
+    const amountChange = (event) => {
+       setEnteredAmount(event.target.value); 
+    //   setUserInput({
+    //     ...userInput,
+    //     enteredAmount:event.target.value 
+    //    })   
+    };
+    const dateChange = (event) => {
+        setEnteredDate(event.target.value); 
+        // setUserInput({
+        //     ...userInput,
+        //     enteredDate:event.target.value  
+        //    })   
+    };
+   
+    const sumbitform = (event) => {
+        event.preventDefault();
+        const enteredData = {
+            title:enteredtitle,
+            amount:enteredAmount,
+            date: new Date(enteredDate)
+        };
+        console.log(enteredData)
+    }
 
     return (
-        <form >
+        <form onSubmit={sumbitform}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                 <label>Expense Title </label>
-                <input type='text' onChange={onChangeLog} />
+                <input type='text' onChange={titleChange} />
                 </div>
                 <div className='new-expense__control'>
                 <label>Expense Amount </label>
-                <input type='number' min='0.01' step='0.01' onChange={onChangeLog} />
+                <input type='number' min='0.01' step='0.01' onChange={amountChange} />
                 </div>
                 <div className='new-expense__control'>
                 <label>Date</label>
-                <input type='date' min='2019-01-01' max='2022-12-31' onChange={onChangeLog} />
+                <input type='date' min='2019-01-01' max='2022-12-31' onChange={dateChange} />
                 </div>
             </div>
             <div className='new-expense__control'>
