@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 import clickHandler from '../Expense/ExpenseDelete';
 
 import './ExpenseItem.css';
-import './expenses.css';
+import './Expenses.css';
 
 const ExpenseItem = (props) =>{                    
 
