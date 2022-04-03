@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import './ExpenseForm.css';
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     
-    const [enteredtitle, setEnteredTitle] = useState('');
+    const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
+    const [enteredLocation, setEnteredLocation] = useState('');
 
 //    const [userInput, setUserInput] = useState({
 //         enteredTitle,
@@ -19,6 +20,14 @@ const ExpenseForm = () => {
     //         enteredTitle:event.target.value 
     //        })
     };
+
+    const locationChange = (event) => {
+        setEnteredLocation(event.target.value); 
+     //   setUserInput({
+     //     ...userInput,
+     //     enteredLocation:event.target.value 
+     //    })   
+     };
     const amountChange = (event) => {
        setEnteredAmount(event.target.value); 
     //   setUserInput({
@@ -36,28 +45,50 @@ const ExpenseForm = () => {
    
     const sumbitform = (event) => {
         event.preventDefault();
-        const enteredData = {
-            title:enteredtitle,
+        const expenseData = {
+            title:enteredTitle,
             amount:enteredAmount,
+            location:enteredLocation,
             date: new Date(enteredDate)
         };
-        console.log(enteredData)
+        
+        props.onSaveExpenseData(expenseData);
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredLocation('');
+        setEnteredDate('');
     }
 
     return (
         <form onSubmit={sumbitform}>
             <div className='new-expense__controls'>
+
                 <div className='new-expense__control'>
                 <label>Expense Title </label>
-                <input type='text' onChange={titleChange} />
+                <input type='text'
+                value={enteredTitle}
+                 onChange={titleChange}/>
                 </div>
+
                 <div className='new-expense__control'>
                 <label>Expense Amount </label>
-                <input type='number' min='0.01' step='0.01' onChange={amountChange} />
+                <input type='number'
+                value={enteredAmount}
+                 min='0.01' step='0.01' onChange={amountChange} />
                 </div>
+
                 <div className='new-expense__control'>
                 <label>Date</label>
-                <input type='date' min='2019-01-01' max='2022-12-31' onChange={dateChange} />
+                <input type='date' min='2019-01-01' max='2022-12-31'
+                value={enteredDate} 
+                onChange={dateChange} />
+                </div>
+
+                <div className='new-expense__control'>
+                <label>Location</label>
+                <input type='text' 
+                value={enteredLocation} 
+                onChange={locationChange} />
                 </div>
             </div>
             <div className='new-expense__control'>
